@@ -2,7 +2,11 @@ node_modules/
 dist/
 coverage/
 *.log
+bin/
+obj/
 __pycache__/
 .pytest_cache/
 .venv/
+.tools/
+.dotnet-cli-home/
 kata-2/api/data/runtime/

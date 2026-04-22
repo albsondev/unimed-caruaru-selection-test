@@ -7,11 +7,11 @@ Estruturei a API em quatro camadas:
 - `domain`: contratos centrais da entidade `Task`
 - `application`: servico com regras de negocio e validacoes
 - `infrastructure`: repositorio em arquivo JSON com escrita atomica
-- `presentation`: rotas HTTP, validacao de payload e traducao de erros
+- `presentation`: Minimal API do ASP.NET Core, com endpoints enxutos e middleware de erro
 
 Essa separacao reduz acoplamento, facilita testes e torna a troca de persistencia relativamente simples. Se eu decidir migrar de JSON para SQLite ou PostgreSQL, a mudanca principal fica concentrada na implementacao do repositorio.
 
-Tambem optei por `Fastify` por ser enxuto, performatico e simples de observar, o que combina bem com um painel interno de pequena escala que pode crescer.
+Tambem optei por `ASP.NET Core` porque ele se alinha diretamente a stack mencionada no enunciado, oferece boa ergonomia com injecao de dependencia, middleware, modelagem clara de servicos e uma trilha natural de evolucao para producao.
 
 ## 2. Como garantir confiabilidade em producao
 

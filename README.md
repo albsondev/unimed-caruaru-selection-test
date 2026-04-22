@@ -14,12 +14,12 @@
 
 Escolhi uma arquitetura multi-stack, alinhada ao contexto do teste e ao ambiente disponivel:
 
-- `TypeScript` para os Katas 1 e 2, garantindo tipagem forte, legibilidade, refatoracao segura e uma base consistente para backend e frontend.
-- `Fastify + Node.js` no backend do Kata 2, priorizando simplicidade operacional, boa performance e baixo overhead.
+- `TypeScript` no Kata 1 e no frontend do Kata 2, garantindo tipagem forte, legibilidade e refatoracao segura.
+- `C# / ASP.NET Core` no backend do Kata 2, para aderir de forma mais proxima a stack sugerida pela equipe da Unimed Caruaru.
 - `React + Vite` no frontend do Kata 2, para entregar uma interface clara, rapida e facil de manter.
 - `Python 3.13` com biblioteca padrao no Kata 4, por ser uma escolha pragmatica para ETL, manipulacao de CSV e automacao de dados sem dependencias externas.
 
-Observacao importante: a stack sugerida no enunciado inclui `.NET`, mas o ambiente local disponibilizado para a execucao deste projeto nao possui o SDK instalado. Optei por manter a entrega em tecnologias igualmente adequadas, priorizando portabilidade, produtividade e qualidade arquitetural.
+Para aumentar a aderencia ao ambiente real descrito no enunciado, priorizei `.NET` exatamente no ponto de maior relevancia para a vaga: a API/backend do Kata 2. O arquivo `global.json` fixa a versao do SDK usada no projeto.
 
 ## Estrutura do repositorio
 
@@ -33,6 +33,7 @@ Observacao importante: a stack sugerida no enunciado inclui `.NET`, mas o ambien
 ### Requisitos
 
 - `Node.js 24+`
+- `.NET SDK 10.0.203+`
 - `Python 3.13+`
 
 ### Instalar dependencias JavaScript
@@ -82,7 +83,7 @@ VITE_API_BASE_URL=http://localhost:3001
 ### Kata 2 - Testes do backend
 
 ```bash
-npm run test -w kata-2/api
+scripts\dotnet.cmd test kata-2/api/tests/TaskPanel.Api.Tests/TaskPanel.Api.Tests.csproj
 ```
 
 ### Kata 3
@@ -110,6 +111,7 @@ python -m unittest discover -s kata-4/tests -p "test_*.py"
 ## Qualidade e boas praticas adotadas
 
 - Separacao explicita entre dominio, aplicacao, infraestrutura e camada HTTP no backend.
+- Aderencia intencional a `C# / ASP.NET Core` no backend principal do desafio full-stack.
 - Tipagem rigorosa e contratos bem definidos.
 - Regras de negocio isoladas e extensiveis.
 - Persistencia desacoplada por interface.
