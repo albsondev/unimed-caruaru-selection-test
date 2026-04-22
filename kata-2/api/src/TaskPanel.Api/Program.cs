@@ -47,7 +47,7 @@ app.Use(async (context, next) =>
     catch
     {
         context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-        await context.Response.WriteAsJsonAsync(new ErrorEnvelope("Unexpected server error."));
+        await context.Response.WriteAsJsonAsync(new ErrorEnvelope("Ocorreu um erro interno no servidor."));
     }
 });
 

@@ -51,14 +51,14 @@ public sealed class TaskService
     {
         if (title is null && status is null)
         {
-            throw new AppException("At least one field must be provided for update.", StatusCodes.Status400BadRequest);
+            throw new AppException("Informe ao menos um campo para atualizar a tarefa.", StatusCodes.Status400BadRequest);
         }
 
         var currentTask = await _repository.FindByIdAsync(id, cancellationToken);
 
         if (currentTask is null)
         {
-            throw new AppException("Task not found.", StatusCodes.Status404NotFound);
+            throw new AppException("Tarefa nao encontrada.", StatusCodes.Status404NotFound);
         }
 
         var nextTitle = title is null
@@ -86,7 +86,7 @@ public sealed class TaskService
 
         if (!removed)
         {
-            throw new AppException("Task not found.", StatusCodes.Status404NotFound);
+            throw new AppException("Tarefa nao encontrada.", StatusCodes.Status404NotFound);
         }
     }
 
@@ -97,12 +97,12 @@ public sealed class TaskService
 
         if (normalizedTitle.Length < 3)
         {
-            throw new AppException("Title must have at least 3 characters.", StatusCodes.Status400BadRequest);
+            throw new AppException("O titulo deve ter pelo menos 3 caracteres.", StatusCodes.Status400BadRequest);
         }
 
         if (normalizedTitle.Length > 140)
         {
-            throw new AppException("Title must have at most 140 characters.", StatusCodes.Status400BadRequest);
+            throw new AppException("O titulo deve ter no maximo 140 caracteres.", StatusCodes.Status400BadRequest);
         }
 
         return normalizedTitle;

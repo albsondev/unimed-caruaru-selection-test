@@ -16,7 +16,7 @@ public static class TaskStatusParser
         {
             "pending" => DomainTaskStatus.Pending,
             "completed" => DomainTaskStatus.Completed,
-            _ => throw new AppException("Status must be pending or completed.", StatusCodes.Status400BadRequest)
+            _ => throw new AppException("O status deve ser 'pending' ou 'completed'.", StatusCodes.Status400BadRequest)
         };
     }
 }
