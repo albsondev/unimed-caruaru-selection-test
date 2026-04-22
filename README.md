@@ -6,22 +6,26 @@
 - Telefone de contato: `PREENCHER_ANTES_DA_ENTREGA`
 - E-mail: `PREENCHER_ANTES_DA_ENTREGA`
 
+## Repositorio
+
+- GitHub: [albsondev/unimed-caruaru-selection-test](https://github.com/albsondev/unimed-caruaru-selection-test)
+
 ## Stack utilizada e justificativa
 
-Escolhi uma arquitetura multi-stack, alinhada ao contexto do teste e ao ambiente disponível:
+Escolhi uma arquitetura multi-stack, alinhada ao contexto do teste e ao ambiente disponivel:
 
-- `TypeScript` para os Katas 1 e 2, garantindo tipagem forte, legibilidade, refatoração segura e uma base consistente para backend e frontend.
+- `TypeScript` para os Katas 1 e 2, garantindo tipagem forte, legibilidade, refatoracao segura e uma base consistente para backend e frontend.
 - `Fastify + Node.js` no backend do Kata 2, priorizando simplicidade operacional, boa performance e baixo overhead.
-- `React + Vite` no frontend do Kata 2, para entregar uma interface clara, rápida e fácil de manter.
-- `Python 3.13` com biblioteca padrão no Kata 4, por ser uma escolha pragmática para ETL, manipulação de CSV e automação de dados sem dependências externas.
+- `React + Vite` no frontend do Kata 2, para entregar uma interface clara, rapida e facil de manter.
+- `Python 3.13` com biblioteca padrao no Kata 4, por ser uma escolha pragmatica para ETL, manipulacao de CSV e automacao de dados sem dependencias externas.
 
-Observacao importante: a stack sugerida no enunciado inclui `.NET`, mas o ambiente local disponibilizado para a execução deste projeto nao possui o SDK instalado. Optei por manter a entrega em tecnologias igualmente adequadas, priorizando portabilidade, produtividade e qualidade arquitetural.
+Observacao importante: a stack sugerida no enunciado inclui `.NET`, mas o ambiente local disponibilizado para a execucao deste projeto nao possui o SDK instalado. Optei por manter a entrega em tecnologias igualmente adequadas, priorizando portabilidade, produtividade e qualidade arquitetural.
 
 ## Estrutura do repositorio
 
 - `kata-1/`: fila de triagem, testes e analise
 - `kata-2/`: requisitos, API REST, frontend e documento de engenharia
-- `kata-3/`: plano tecnico para o sistema legado
+- `kata-3/`: plano tecnico do sistema legado
 - `kata-4/`: pipeline de transformacao, dados de exemplo, indicadores e analise
 
 ## Como executar
@@ -35,6 +39,14 @@ Observacao importante: a stack sugerida no enunciado inclui `.NET`, mas o ambien
 
 ```bash
 npm install
+```
+
+### Rodar validacao completa
+
+```bash
+npm run typecheck
+npm run test
+npm run build
 ```
 
 ### Kata 1
@@ -104,6 +116,7 @@ python -m unittest discover -s kata-4/tests -p "test_*.py"
 - Escrita atomica em arquivo no backend para reduzir risco de corrupcao.
 - Testes cobrindo regras de negocio criticas.
 - Documentacao de trade-offs e decisoes de engenharia.
+- Historico de commits organizado por entregavel.
 
 ## O que eu faria diferente com mais tempo
 
@@ -111,4 +124,4 @@ python -m unittest discover -s kata-4/tests -p "test_*.py"
 - Adicionar autenticacao, autorizacao e rastreabilidade de usuario no painel de tarefas.
 - Incluir CI com lint, typecheck, testes, build e cobertura.
 - Adicionar telemetria estruturada e dashboards para o backend.
-- Evoluir o pipeline do Kata 4 para processamento particionado e orientado a lotes com DuckDB/Polars ou Spark, conforme volume.
+- Evoluir o pipeline do Kata 4 para processamento particionado e orientado a lotes com DuckDB, Polars ou Spark, conforme volume.
