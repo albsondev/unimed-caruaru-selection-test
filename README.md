@@ -10,6 +10,17 @@
 
 - GitHub: [albsondev/unimed-caruaru-selection-test](https://github.com/albsondev/unimed-caruaru-selection-test)
 
+## Visao geral da entrega
+
+Este repositorio foi estruturado para atender aos quatro katas propostos, com foco em:
+
+- clareza de raciocinio e documentacao das decisoes
+- arquitetura simples, extensivel e aderente ao contexto de cada problema
+- validacao automatizada sempre que o kata envolve codigo executavel
+- equilibrio entre pragmatismo de entrega e qualidade de engenharia
+
+Optei por usar a stack sugerida sempre que isso gerava vantagem real para comparabilidade com o ambiente da vaga. Por isso, o ponto de maior peso full-stack do desafio, o backend do Kata 2, foi implementado em `C# / ASP.NET Core`.
+
 ## Stack utilizada e justificativa
 
 Escolhi uma arquitetura multi-stack, alinhada ao contexto do teste e ao ambiente disponivel:
@@ -27,6 +38,52 @@ Para aumentar a aderencia ao ambiente real descrito no enunciado, priorizei `.NE
 - `kata-2/`: requisitos, API REST, frontend e documento de engenharia
 - `kata-3/`: plano tecnico do sistema legado
 - `kata-4/`: pipeline de transformacao, dados de exemplo, indicadores e analise
+
+## Overview por kata
+
+### Kata 1 - Fila de triagem
+
+- objetivo: ordenar pacientes com base em regras de prioridade e FIFO
+- implementacao: modulo `TypeScript` com pipeline de regras extensivel
+- qualidade: testes unitarios cobrindo regras criticas e casos de borda
+- documentacao: analise tecnica e modelagem SQL opcional
+
+### Kata 2 - Painel de tarefas
+
+- objetivo: entregar feature full-stack com analise de requisitos, API e frontend
+- backend: `ASP.NET Core` com Minimal API, servico de aplicacao e repositorio em JSON
+- frontend: `React + TypeScript + Vite`
+- qualidade: testes automatizados do backend, contrato HTTP consistente e persistencia atomica em arquivo
+
+### Kata 3 - Sistema legado em colapso
+
+- objetivo: produzir um plano tecnico priorizado para um contexto realista de incidentes
+- entregavel: documento executivo com diagnostico, plano de acao, decisao arquitetural e RNFs negligenciados
+- foco: priorizacao, trade-offs e maturidade de engenharia
+
+### Kata 4 - Pipeline de dados
+
+- objetivo: ler, limpar, consolidar e analisar dados inconsistentes de multiplos CSVs
+- implementacao: pipeline em `Python` com tratamento deterministico e idempotente
+- qualidade: testes de parsing e normalizacao, relatorio de qualidade e arquivos de saida gerados
+
+## Arquitetura e tecnicas adotadas
+
+- `Separation of concerns`: dominio, aplicacao, infraestrutura e borda HTTP separados onde faz sentido
+- `KISS`: evitar complexidade estrutural desnecessaria para um teste tecnico com escopo controlado
+- `DRY`: centralizacao de regras, parsers e contratos em pontos unicos de manutencao
+- `Open for extension`: Kata 1 modelado como pipeline de regras de triagem
+- `Persistencia pragmatica`: JSON local para MVPs com escrita atomica e baixo acoplamento
+- `Stack aderente`: uso de `ASP.NET Core` no backend do Kata 2, `React + TypeScript` no frontend e `Python` no pipeline
+- `Documentacao decisional`: arquivos dedicados para explicar ambiguidades, RF/RNF, arquitetura e trade-offs
+
+## Garantias de qualidade
+
+- `Kata 1`: testes unitarios da logica de triagem
+- `Kata 2`: testes automatizados do backend `.NET`, validacao de build e contrato simples para o frontend
+- `Kata 3`: documento estruturado com criterio de priorizacao e metricas sugeridas
+- `Kata 4`: testes do pipeline, relatorio de qualidade e geracao de artefatos consolidados
+- `Repositorio`: historico de commits organizado por entregavel e evolucao tecnica
 
 ## Como executar
 
@@ -119,6 +176,18 @@ python -m unittest discover -s kata-4/tests -p "test_*.py"
 - Testes cobrindo regras de negocio criticas.
 - Documentacao de trade-offs e decisoes de engenharia.
 - Historico de commits organizado por entregavel.
+
+## Checklist de aderencia ao edital
+
+- `README.md` raiz com nome, telefone, e-mail, stack, instrucoes e comentarios finais: atendido
+- `Kata 1` com implementacao, testes unitarios e analise escrita: atendido
+- `Kata 2` com `REQUISITOS.md`, API, frontend e documento de engenharia: atendido
+- `Kata 3` com `PLANO.md` nas quatro secoes pedidas: atendido
+- `Kata 4` com pipeline, dados de exemplo, indicadores e analise escrita: atendido
+- repositorio publico no GitHub: atendido
+- commits organizados por entregavel: atendido
+
+Observacao: o item de envio por e-mail para a empresa e externo ao repositorio, portanto depende da submissao final manual.
 
 ## O que eu faria diferente com mais tempo
 
