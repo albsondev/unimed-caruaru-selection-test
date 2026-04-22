@@ -1,0 +1,39 @@
+{
+  "rejected_orders": [
+    {
+      "reason": "missing_required_fields",
+      "details": "data_pedido",
+      "row": "{\"id_pedido\": \"1005\", \"data_pedido\": \"\", \"id_cliente\": \"5\", \"valor_total\": \"799.30\", \"status\": \"cancelado\"}"
+    },
+    {
+      "reason": "missing_required_fields",
+      "details": "valor_total",
+      "row": "{\"id_pedido\": \"1006\", \"data_pedido\": \"14/01/2025\", \"id_cliente\": \"6\", \"valor_total\": \"\", \"status\": \"concluido\"}"
+    }
+  ],
+  "rejected_clients": [
+    {
+      "reason": "missing_required_fields",
+      "details": "nome",
+      "row": "{\"id_cliente\": \"5\", \"nome\": \"\", \"cidade\": \"Caruaru\", \"estado\": \"PE\", \"data_cadastro\": \"2024-06-16\"}"
+    },
+    {
+      "reason": "missing_required_fields",
+      "details": "cidade",
+      "row": "{\"id_cliente\": \"6\", \"nome\": \"Larissa Melo\", \"cidade\": \"\", \"estado\": \"PE\", \"data_cadastro\": \"2024-06-17\"}"
+    }
+  ],
+  "rejected_deliveries": [],
+  "orphan_delivery_ids": [
+    "9999",
+    "1006"
+  ],
+  "orders_without_valid_client": [],
+  "summary": {
+    "rejected_orders_count": 2,
+    "rejected_clients_count": 2,
+    "rejected_deliveries_count": 0,
+    "orphan_delivery_count": 2,
+    "orders_without_valid_client_count": 0
+  }
+}

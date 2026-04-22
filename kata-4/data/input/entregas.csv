@@ -1,0 +1,7 @@
+id_entrega,id_pedido,data_prevista,data_realizada,status_entrega
+5001,1001,2025-01-12,2025-01-11,entregue
+5002,1002,13/01/2025,2025-01-14,entregue
+5003,1003,1736812800,1737072000,entregue
+5004,1004,2025-01-20,,aguardando
+5005,9999,2025-01-18,2025-01-18,entregue
+5006,1006,2025-01-15,2025-01-17,entregue

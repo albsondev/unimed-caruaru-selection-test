@@ -1,0 +1,24 @@
+{
+  "total_pedidos_por_status": {
+    "concluido": 2,
+    "em_transporte": 1,
+    "pendente": 1
+  },
+  "ticket_medio_por_estado": {
+    "PE": "560.00",
+    "SP": "1257.13"
+  },
+  "percentual_entregas_no_prazo": 33.33,
+  "percentual_entregas_com_atraso": 66.67,
+  "top_3_cidades_por_volume": [
+    [
+      "Sao Paulo",
+      3
+    ],
+    [
+      "Recife",
+      1
+    ]
+  ],
+  "media_atraso_em_dias_para_pedidos_atrasados": 2.0
+}

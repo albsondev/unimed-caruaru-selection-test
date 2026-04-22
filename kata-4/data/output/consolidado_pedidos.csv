@@ -1,0 +1,5 @@
+id_pedido,nome_cliente,cidade_normalizada,estado,valor_total,status_pedido,data_pedido,data_prevista_entrega,data_realizada_entrega,atraso_dias,status_entrega
+1001,Ana Silva,Sao Paulo,SP,1250.50,concluido,2025-01-10T00:00:00,2025-01-12T00:00:00,2025-01-11T00:00:00,-1,entregue
+1002,Carlos Lima,Sao Paulo,SP,980.90,em_transporte,2025-01-11T00:00:00,2025-01-13T00:00:00,2025-01-14T00:00:00,1,entregue
+1003,Marina Costa,Sao Paulo,SP,1540.00,concluido,2025-01-11T00:00:00,2025-01-14T00:00:00,2025-01-17T00:00:00,3,entregue
+1004,Joao Pedro,Recife,PE,560.00,pendente,2025-01-13T09:15:00,2025-01-20T00:00:00,,,aguardando

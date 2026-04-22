@@ -1,0 +1,7 @@
+id_pedido,data_pedido,id_cliente,valor_total,status
+1001,2025-01-10,1,"1250,50",concluido
+1002,11/01/2025,2,980.90,em_transporte
+1003,1736553600,3,"1.540,00",concluido
+1004,2025-01-13T09:15:00,4,560,pendente
+1005,,5,799.30,cancelado
+1006,14/01/2025,6,,concluido
