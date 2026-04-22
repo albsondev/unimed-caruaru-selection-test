@@ -1,0 +1,28 @@
+{
+  "name": "unimed-test",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "kata-1",
+    "kata-2/api",
+    "kata-2/web"
+  ],
+  "scripts": {
+    "build": "npm run build -w kata-1 && npm run build -w kata-2/api && npm run build -w kata-2/web",
+    "test": "npm run test -w kata-1 && npm run test -w kata-2/api && python -m unittest discover -s kata-4/tests -p \"test_*.py\"",
+    "typecheck": "npm run typecheck -w kata-1 && npm run typecheck -w kata-2/api && npm run typecheck -w kata-2/web",
+    "dev:api": "npm run dev -w kata-2/api",
+    "dev:web": "npm run dev -w kata-2/web",
+    "kata4": "python kata-4/scripts/pipeline.py"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.6",
+    "@vitejs/plugin-react": "^4.4.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.18",
+    "vitest": "^3.1.2"
+  }
+}

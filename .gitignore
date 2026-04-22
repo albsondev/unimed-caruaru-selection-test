@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+*.log
+__pycache__/
+.pytest_cache/
+.venv/
+kata-2/api/data/runtime/
