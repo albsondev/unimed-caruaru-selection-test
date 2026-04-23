@@ -85,6 +85,15 @@ Para aproximar a entrega do ambiente real descrito no enunciado, concentrei o us
 - `Kata 4`: testes do pipeline, relatorio de qualidade e geracao de artefatos consolidados
 - `Repositorio`: historico de commits organizado por entregavel e evolucao tecnica
 
+## Como a entrega atende aos criterios de avaliacao
+
+- `Clareza do raciocinio`: cada kata possui documentacao explicita de decisoes, premissas, trade-offs e extensoes possiveis.
+- `Qualidade do codigo`: a implementacao privilegia separacao de responsabilidades, legibilidade, validacoes defensivas e tratamento consistente de erros.
+- `Decisoes de engenharia`: a escolha de stack, arquitetura, persistencia e estrategia de evolucao foi registrada e justificada ao longo do repositorio.
+- `Analise de requisitos`: o Kata 2 formaliza ambiguidades, perguntas ao cliente, RFs, RNFs e tratamento de backlog.
+- `Banco de dados`: o Kata 1 inclui modelagem SQL opcional, e o Kata 2 explicita a estrategia de persistencia adotada e sua evolucao futura.
+- `Testes e qualidade`: os katas executaveis possuem testes automatizados e comandos de validacao documentados na raiz.
+
 ## Como executar
 
 ### Requisitos
@@ -110,8 +119,11 @@ npm run build
 ### Kata 1
 
 ```bash
+npm run build -w kata-1
 npm run test -w kata-1
 ```
+
+Esse kata nao possui interface executavel; a validacao principal esta na funcao de triagem e nos testes unitarios.
 
 ### Kata 2 - API
 
@@ -145,7 +157,7 @@ scripts\dotnet.cmd test kata-2/api/tests/TaskPanel.Api.Tests/TaskPanel.Api.Tests
 
 ### Kata 3
 
-Leitura direta do documento:
+Esse kata nao exige execucao de codigo. A validacao e a leitura direta do documento:
 
 ```bash
 kata-3/PLANO.md
