@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { TaskForm } from "./components/TaskForm";
@@ -14,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     void loadTasks(filter);
@@ -81,56 +83,79 @@ function App() {
     (left, right) =>
       new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime(),
   )[0];
-  const statusMessage = getStatusMessage({
+  const heroStatus = getHeroStatus({
     totalCount,
     pendingCount,
     completedCount,
+    loading,
+  });
+  const nextActionMessage = getNextActionMessage({
+    pendingCount,
+    completedCount,
+    totalCount,
     loading,
   });
 
   return (
     <main className="shell">
       <section className="hero">
-        <div className="hero-copyblock">
-          <p className="eyebrow">Kata 2 - Painel de Tarefas</p>
-          <h1>Um painel simples, confiavel e pronto para evoluir.</h1>
+        <motion.div
+          className="hero-copyblock"
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <p className="eyebrow">Central de tarefas</p>
+          <h1>Organize o dia com clareza, ritmo e prioridades visiveis.</h1>
           <p className="hero-copy">
-            A interface foi pensada para reduzir atrito no fluxo principal: cadastrar,
-            concluir, filtrar e remover tarefas com feedback rapido.
+            Crie, filtre e conclua atividades em poucos toques. O painel destaca o
+            que pede atencao agora e ajuda a equipe a manter o fluxo em movimento.
           </p>
 
-          <div className="hero-highlights" aria-label="Destaques da interface">
-            <article>
-              <span className="highlight-kicker">Fluxo direto</span>
-              <strong>Cadastro e acao em um unico painel</strong>
-            </article>
-            <article>
-              <span className="highlight-kicker">Feedback rapido</span>
-              <strong>Estados, erros e filtros sempre visiveis</strong>
-            </article>
-            <article>
-              <span className="highlight-kicker">Base escalavel</span>
-              <strong>Frontend desacoplado de uma API em ASP.NET Core</strong>
-            </article>
+          <div className="hero-inline">
+            <div className="hero-pill hero-pill--status">
+              <span className="hero-pill__label">Momento atual</span>
+              <strong>{heroStatus}</strong>
+            </div>
+            <div className="hero-pill">
+              <span className="hero-pill__label">Ultima atualizacao</span>
+              <strong>
+                {latestTask
+                  ? formatDateTime(latestTask.updatedAt)
+                  : "Nenhuma atividade registrada"}
+              </strong>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="metrics-card">
+        <motion.aside
+          className="metrics-card"
+          initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
+          animate={reduceMotion ? {} : { opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
+        >
+          <div className="metrics-card__glow" aria-hidden="true" />
+
           <div className="metrics-card__header">
             <div>
-              <span className="metrics-card__eyebrow">Resumo atual</span>
-              <strong>{statusMessage}</strong>
+              <span className="metrics-card__eyebrow">Resumo do painel</span>
+              <strong>{nextActionMessage}</strong>
             </div>
             <span className="metrics-card__pulse" aria-hidden="true" />
           </div>
 
           <div className="metrics-card__spotlight">
-            <div>
-              <span>Taxa de conclusao</span>
+            <div className="metrics-card__spotlight-copy">
+              <span>Progresso de conclusao</span>
               <b>{completionRate}%</b>
             </div>
             <div className="progress-track" aria-hidden="true">
-              <div className="progress-fill" style={{ width: `${completionRate}%` }} />
+              <motion.div
+                className="progress-fill"
+                initial={reduceMotion ? false : { width: 0 }}
+                animate={{ width: `${completionRate}%` }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              />
             </div>
           </div>
 
@@ -140,7 +165,7 @@ function App() {
               <b>{totalCount}</b>
             </article>
             <article>
-              <span>Pendentes</span>
+              <span>Em aberto</span>
               <b>{pendingCount}</b>
             </article>
             <article>
@@ -150,32 +175,45 @@ function App() {
           </div>
 
           <div className="metrics-card__footer">
-            <span className="metrics-card__label">Ultima movimentacao</span>
+            <span className="metrics-card__label">Proxima leitura rapida</span>
             <p>
               {latestTask
-                ? `"${latestTask.title}" atualizada em ${formatDateTime(latestTask.updatedAt)}`
-                : "Assim que uma tarefa for criada, o painel mostrara o ultimo evento aqui."}
+                ? `"${latestTask.title}" foi a ultima tarefa movimentada.`
+                : "Assim que a primeira tarefa entrar, o painel passa a mostrar a atividade mais recente."}
             </p>
           </div>
-        </div>
+        </motion.aside>
       </section>
 
-      <section className="panel">
+      <motion.section
+        className="panel"
+        initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+        animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut", delay: 0.14 }}
+      >
         <div className="panel-head">
           <div>
-            <p className="panel-kicker">Operacao central</p>
-            <h2>Controle rapido da fila de trabalho</h2>
+            <p className="panel-kicker">Seus itens</p>
+            <h2>Painel de acompanhamento</h2>
           </div>
           <div className="panel-summary">
             <span>{getFilterLabel(filter)}</span>
-            <strong>{totalCount} item(ns) visivel(is)</strong>
+            <strong>{totalCount} tarefa(s) exibida(s)</strong>
           </div>
         </div>
 
         <TaskForm disabled={busy} onSubmit={handleCreateTask} />
         <StatusFilter value={filter} onChange={setFilter} />
 
-        {error ? <div className="error-banner">{error}</div> : null}
+        {error ? (
+          <motion.div
+            className="error-banner"
+            initial={reduceMotion ? false : { opacity: 0, y: -8 }}
+            animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+          >
+            {error}
+          </motion.div>
+        ) : null}
 
         {loading ? (
           <section className="empty-state">
@@ -190,7 +228,7 @@ function App() {
             onToggleStatus={handleToggleStatus}
           />
         )}
-      </section>
+      </motion.section>
     </main>
   );
 }
@@ -208,17 +246,17 @@ function formatDateTime(value: string): string {
 
 function getFilterLabel(filter: FilterValue): string {
   if (filter === "pending") {
-    return "Filtro: pendentes";
+    return "Mostrando pendentes";
   }
 
   if (filter === "completed") {
-    return "Filtro: concluidas";
+    return "Mostrando concluidas";
   }
 
-  return "Filtro: todas";
+  return "Mostrando todas";
 }
 
-function getStatusMessage({
+function getHeroStatus({
   totalCount,
   pendingCount,
   completedCount,
@@ -230,22 +268,56 @@ function getStatusMessage({
   loading: boolean;
 }): string {
   if (loading) {
-    return "Carregando panorama operacional";
+    return "Atualizando o painel";
   }
 
   if (totalCount === 0) {
-    return "Painel pronto para receber a primeira tarefa";
+    return "Pronto para comecar";
   }
 
   if (pendingCount === 0) {
-    return "Tudo em dia no momento";
+    return "Tudo concluido no momento";
   }
 
   if (completedCount > pendingCount) {
-    return "Execucao saudavel e sob controle";
+    return "Fluxo sob controle";
   }
 
-  return "Ha espaco claro para proxima acao";
+  return "Ha demandas pedindo atencao";
+}
+
+function getNextActionMessage({
+  pendingCount,
+  completedCount,
+  totalCount,
+  loading,
+}: {
+  pendingCount: number;
+  completedCount: number;
+  totalCount: number;
+  loading: boolean;
+}): string {
+  if (loading) {
+    return "Lendo o ritmo do time";
+  }
+
+  if (totalCount === 0) {
+    return "Adicione a primeira tarefa para iniciar o acompanhamento";
+  }
+
+  if (pendingCount === 0) {
+    return "Nenhum item em aberto agora";
+  }
+
+  if (completedCount === 0) {
+    return "Comece pela primeira entrega pendente";
+  }
+
+  if (pendingCount === 1) {
+    return "Falta so uma tarefa para limpar a fila";
+  }
+
+  return `${pendingCount} tarefas seguem em aberto`;
 }
 
 export default App;
