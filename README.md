@@ -12,25 +12,25 @@
 
 ## Visao geral da entrega
 
-Este repositorio foi estruturado para atender aos quatro katas propostos, com foco em:
+Este repositorio foi estruturado para atender aos quatro katas propostos com foco em:
 
 - clareza de raciocinio e documentacao das decisoes
 - arquitetura simples, extensivel e aderente ao contexto de cada problema
 - validacao automatizada sempre que o kata envolve codigo executavel
 - equilibrio entre pragmatismo de entrega e qualidade de engenharia
 
-Optei por usar a stack sugerida sempre que isso gerava vantagem real para comparabilidade com o ambiente da vaga. Por isso, o ponto de maior peso full-stack do desafio, o backend do Kata 2, foi implementado em `C# / ASP.NET Core`.
+Priorizei a stack sugerida sempre que isso aumentava a aderencia ao contexto da vaga. Por esse motivo, o backend do Kata 2, que concentra a parte full-stack mais relevante do desafio, foi implementado em `C# / ASP.NET Core`.
 
 ## Stack utilizada e justificativa
 
-Escolhi uma arquitetura multi-stack, alinhada ao contexto do teste e ao ambiente disponivel:
+Adotei uma arquitetura multi-stack alinhada ao contexto do teste e ao ambiente disponivel:
 
 - `TypeScript` no Kata 1 e no frontend do Kata 2, garantindo tipagem forte, legibilidade e refatoracao segura.
 - `C# / ASP.NET Core` no backend do Kata 2, para aderir de forma mais proxima a stack sugerida pela equipe da Unimed Caruaru.
 - `React + Vite` no frontend do Kata 2, para entregar uma interface clara, rapida e facil de manter.
 - `Python 3.13` com biblioteca padrao no Kata 4, por ser uma escolha pragmatica para ETL, manipulacao de CSV e automacao de dados sem dependencias externas.
 
-Para aumentar a aderencia ao ambiente real descrito no enunciado, priorizei `.NET` exatamente no ponto de maior relevancia para a vaga: a API/backend do Kata 2. O arquivo `global.json` fixa a versao do SDK usada no projeto.
+Para aproximar a entrega do ambiente real descrito no enunciado, concentrei o uso de `.NET` exatamente no ponto de maior relevancia para a vaga: a API do Kata 2. O arquivo `global.json` fixa a versao do SDK usada no projeto.
 
 ## Estrutura do repositorio
 
@@ -39,7 +39,7 @@ Para aumentar a aderencia ao ambiente real descrito no enunciado, priorizei `.NE
 - `kata-3/`: plano tecnico do sistema legado
 - `kata-4/`: pipeline de transformacao, dados de exemplo, indicadores e analise
 
-## Overview por kata
+## Visao executiva por kata
 
 ### Kata 1 - Fila de triagem
 
@@ -50,7 +50,7 @@ Para aumentar a aderencia ao ambiente real descrito no enunciado, priorizei `.NE
 
 ### Kata 2 - Painel de tarefas
 
-- objetivo: entregar feature full-stack com analise de requisitos, API e frontend
+- objetivo: entregar uma feature full-stack com analise de requisitos, API e frontend
 - backend: `ASP.NET Core` com Minimal API, servico de aplicacao e repositorio em JSON
 - frontend: `React + TypeScript + Vite`
 - qualidade: testes automatizados do backend, contrato HTTP consistente e persistencia atomica em arquivo
@@ -80,7 +80,7 @@ Para aumentar a aderencia ao ambiente real descrito no enunciado, priorizei `.NE
 ## Garantias de qualidade
 
 - `Kata 1`: testes unitarios da logica de triagem
-- `Kata 2`: testes automatizados do backend `.NET`, validacao de build e contrato simples para o frontend
+- `Kata 2`: testes automatizados do backend `.NET`, validacao de build e integracao funcional com o frontend
 - `Kata 3`: documento estruturado com criterio de priorizacao e metricas sugeridas
 - `Kata 4`: testes do pipeline, relatorio de qualidade e geracao de artefatos consolidados
 - `Repositorio`: historico de commits organizado por entregavel e evolucao tecnica
@@ -187,7 +187,7 @@ python -m unittest discover -s kata-4/tests -p "test_*.py"
 - repositorio publico no GitHub: atendido
 - commits organizados por entregavel: atendido
 
-Observacao: o item de envio por e-mail para a empresa e externo ao repositorio, portanto depende da submissao final manual.
+Observacao: o envio do link por e-mail para a empresa e um passo externo ao repositorio e, portanto, depende da submissao final manual.
 
 ## O que eu faria diferente com mais tempo
 

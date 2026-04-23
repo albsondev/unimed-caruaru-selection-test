@@ -9,18 +9,18 @@ Estruturei a API em quatro camadas:
 - `infrastructure`: repositorio em arquivo JSON com escrita atomica
 - `presentation`: Minimal API do ASP.NET Core, com endpoints enxutos e middleware de erro
 
-Essa separacao reduz acoplamento, facilita testes e torna a troca de persistencia relativamente simples. Se eu decidir migrar de JSON para SQLite ou PostgreSQL, a mudanca principal fica concentrada na implementacao do repositorio.
+Essa separacao reduz acoplamento, facilita testes e torna a troca de persistencia relativamente simples. Se eu decidir migrar de JSON para SQLite ou PostgreSQL, a principal mudanca fica concentrada na implementacao do repositorio.
 
 Tambem optei por `ASP.NET Core` porque ele se alinha diretamente a stack mencionada no enunciado, oferece boa ergonomia com injecao de dependencia, middleware, modelagem clara de servicos e uma trilha natural de evolucao para producao.
 
 ## 2. Como garantir confiabilidade em producao
 
-Eu focaria, no minimo, nestes pilares:
+Eu focaria, no minimo, nos seguintes pilares:
 
 - `Observabilidade`: logs estruturados com correlacao por request, metricas de latencia, taxa de erro e volume por endpoint
 - `Confiabilidade operacional`: health checks, tratamento padronizado de erros, timeouts, validacao de entrada e deploy automatizado com smoke tests
 
-Em uma versao de producao real, eu incluiria ainda:
+Em uma versao de producao real, eu acrescentaria ainda:
 
 - persistencia transacional em banco relacional
 - backups e estrategia de restauracao
@@ -29,7 +29,7 @@ Em uma versao de producao real, eu incluiria ainda:
 
 ## 3. O que mudaria para suportar multiplos usuarios com autenticacao
 
-A arquitetura atual e intencionalmente single-user. Para evoluir para multitenancy simples com autenticacao, eu faria:
+A arquitetura atual e intencionalmente single-user. Para evoluir para um modelo multiusuario com autenticacao, eu faria:
 
 - adicionar identidade de usuario no dominio (`userId` em `Task`)
 - incluir camada de autenticacao com JWT ou sessao
@@ -37,4 +37,4 @@ A arquitetura atual e intencionalmente single-user. Para evoluir para multitenan
 - mover a persistencia para banco relacional com indices por `userId` e `status`
 - revisar contratos e testes para garantir isolamento de dados entre usuarios
 
-Tambem passaria a considerar requisitos nao funcionais adicionais, como seguranca, auditoria, controle de acesso e LGPD, que nao sao relevantes no MVP atual, mas passam a ser criticos num ambiente multiusuario.
+Tambem passaria a considerar requisitos nao funcionais adicionais, como seguranca, auditoria, controle de acesso e LGPD, que nao sao centrais no MVP atual, mas passam a ser criticos em um ambiente multiusuario.

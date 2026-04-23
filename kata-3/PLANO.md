@@ -15,7 +15,7 @@
 - `Urgente e importante`: lentidao do endpoint, duplicidade de pedidos, ausencia de testes, mudancas em producao sem processo
 - `Importante`: arquivo monolitico de 4.000 linhas
 
-Eu deliberadamente nao classifico o arquivo de 4.000 linhas como o primeiro incendio a apagar, porque ele e uma fonte estrutural de risco, mas os incidentes que afetam receita e integridade transacional merecem resposta imediata.
+Deliberadamente, eu nao classifico o arquivo de 4.000 linhas como o primeiro incendio a apagar, porque ele e uma fonte estrutural de risco, mas os incidentes que afetam receita e integridade transacional exigem resposta imediata.
 
 ## Secao 2 - Plano de acao
 
@@ -37,8 +37,8 @@ Eu deliberadamente nao classifico o arquivo de 4.000 linhas como o primeiro ince
 ### Prioridade 2 - Reduzir a latencia do endpoint de consulta
 
 - O que sera feito:
-  - capturar traces e metricas do endpoint para localizar gargalo real
-  - analisar query plan e adicionar indices faltantes
+  - capturar traces e metricas do endpoint para localizar o gargalo real
+  - analisar o plano de execucao das queries e adicionar indices faltantes
   - eliminar N+1 e ajustar projections para retornar somente o necessario
   - considerar cache de leitura para consultas repetitivas
   - definir SLO de latencia e baseline antes/depois
@@ -76,7 +76,7 @@ A refatoracao incremental me permite:
 - extrair modulos menores em fatias seguras
 - medir ganho de qualidade a cada etapa, sem big bang
 
-Eu so consideraria reescrita parcial se, durante a instrumentacao e os testes de caracterizacao, ficasse provado que uma parte especifica do modulo esta irreparavelmente acoplada ou inviavel de manter. Mesmo assim, faria isso por estrangulamento, nao por substituicao total imediata.
+Eu so consideraria reescrita parcial se, durante a instrumentacao e os testes de caracterizacao, ficasse provado que uma parte especifica do modulo esta irreparavelmente acoplada ou inviavel de manter. Mesmo assim, faria isso por estrangulamento, e nao por substituicao total imediata.
 
 ## Secao 4 - RNFs ignorados
 
@@ -99,7 +99,7 @@ Eu so consideraria reescrita parcial se, durante a instrumentacao e os testes de
 - Por que esta comprometido:
   - o dominio esta concentrado em um unico arquivo de mais de 4.000 linhas e nao ha testes automatizados
 - Metrica sugerida:
-  - complexidade ciclomática por modulo, cobertura de testes dos fluxos criticos e lead time de mudanca
+  - complexidade ciclomatica por modulo, cobertura de testes dos fluxos criticos e lead time de mudanca
 
 ### 4. Auditabilidade
 

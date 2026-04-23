@@ -5,7 +5,7 @@
 ### Ambiguidade 1 - Quem e o dono das tarefas?
 
 - Pergunta ao cliente: as tarefas sao pessoais por usuario, compartilhadas por equipe ou globais?
-- Decisao adotada: considerei um painel single-user para a primeira versao, com escopo local e sem autenticacao.
+- Decisao adotada: considerei um painel single-user na primeira versao, com escopo local e sem autenticacao.
 
 ### Ambiguidade 2 - O que exatamente significa "situacao"?
 
@@ -25,7 +25,7 @@
 ### Ambiguidade 5 - Prioridade ja deve influenciar comportamento?
 
 - Pergunta ao cliente: prioridade entra apenas como campo futuro ou ja deve impactar ordenacao e filtros?
-- Decisao adotada: tratei como item de backlog e nao o inclui no contrato da API para evitar overengineering prematuro.
+- Decisao adotada: tratei como item de backlog e nao o inclui no contrato da API para evitar complexidade prematura.
 
 ## 2. Requisitos Funcionais (RF)
 
@@ -47,10 +47,10 @@
 
 ## 4. Tratamento do item de prioridade no backlog
 
-Eu o classificaria como `should have`, nao como `must have`, seguindo uma leitura MoSCoW. Ele tem valor claro para o produto, mas o proprio cliente sinalizou que pode ficar para depois. Na pratica:
+Eu o classificaria como `should have`, e nao como `must have`, seguindo a leitura MoSCoW. Ele tem valor claro para o produto, mas o proprio cliente sinalizou que pode ficar para depois. Na pratica:
 
-- manteria o item no backlog do produto, com descricao funcional e criterios de aceite
+- manteria o item no backlog do produto, com descricao funcional e criterios objetivos de aceite
 - evitaria contaminar o MVP com campos e regras ainda nao confirmados
-- deixaria a arquitetura preparada para extensao futura, por exemplo com `PATCH` generico e camada de dominio isolada
+- deixaria a arquitetura preparada para evolucao futura, por exemplo com `PATCH` generico e camada de dominio isolada
 
-Esse tratamento reduz risco de retrabalho e preserva foco no fluxo principal pedido pelo cliente.
+Essa abordagem reduz risco de retrabalho e preserva foco no fluxo principal solicitado pelo cliente.
